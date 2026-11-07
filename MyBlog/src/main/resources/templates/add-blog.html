@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write a Blog | MyBlog</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header class="site-header">
+    <a class="brand" th:href="@{/}">MyBlog</a>
+    <a class="text-link" th:href="@{/}">← Back to home</a>
+</header>
+
+<main class="container form-container">
+    <p class="eyebrow">NEW STORY</p>
+    <h1>Write your blog</h1>
+    <p class="muted">Put your thoughts into words and publish them.</p>
+
+    <form th:action="@{/save}" th:object="${blog}" method="post" class="blog-form">
+        <label for="title">Blog title</label>
+        <input id="title" type="text" th:field="*{title}"
+               placeholder="Give your story a title" maxlength="200" required>
+
+        <label for="content">Your content</label>
+        <textarea id="content" th:field="*{content}" rows="12"
+                  placeholder="Start writing here..." required></textarea>
+
+        <button class="button" type="submit">Publish blog</button>
+    </form>
+</main>
+</body>
+</html>
